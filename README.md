@@ -22,23 +22,40 @@ Installation
 
 Install via pip:
 
-    pip install automation
+```sh
+$ pip install automation
+```
 
 Create fabfile.py in your project's root directory and tell automation
 about your project, then import automation:
 
-    from fabric.api import env
+```python
+from fabric.api import env
 
-    env.django_settings_module = 'myproject.settings'
-    env.django_test_settings_module = 'myproject.test_settings'
-    env.staging_server = {
-      'host': '123.123.123.11',
-      'user': 'web'}
-    env.production_server = {
-      'host': '123.123.123.22',
-      'user': 'web'}
+env.django_settings_module = 'myproject.settings'
+env.django_test_settings_module = 'myproject.test_settings'
+env.staging_server = {
+  'host': '123.123.123.11',
+  'user': 'web'}
+env.production_server = {
+  'host': '123.123.123.22',
+  'user': 'web'}
 
-    from automation import *
+from automation import *
+```
+
+Usage
+-----
+
+Exactly as mentioned above, just enter the command in your shell.  Note
+that you must be in your project's directory (or a sub-directory)
+thereof for Fabric to be able to find your fabfile.
+
+e.g.
+
+```sh
+~/projects/myproject $ fab topic
+```
 
 Help
 ----
