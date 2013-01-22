@@ -12,6 +12,7 @@ def deploy(branch, plan):
       if "Changes to be comitted" in server_status:
         abort("There are uncomitted changes on the server.")
       run("git pull")
+      run("git submodule update")
       if plan == 'full':
         run("pip install --upgrade -r requirements.txt --use-mirrors")
       run("python manage.py migrate")
@@ -29,6 +30,7 @@ def test_branch(branch):
           "Please stash these first before running a full deploy.")
   local("git checkout %s" % branch)
   local("git pull origin %s" % branch)
+  local("git submodule update")
   local("make develop")
   django.settings_module(env.django_test_settings_module)
   if not local("make test").succeeded:
