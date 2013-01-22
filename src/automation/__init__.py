@@ -1,5 +1,3 @@
-from os.path import abspath, basename, dirname, join
-
 from fabric.api import env
 from fabric.contrib import django
 
