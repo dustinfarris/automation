@@ -3,8 +3,6 @@ from os.path import abspath, basename, dirname, join
 from fabric.api import env
 from fabric.contrib import django
 
-import settings  # Create settings.py and override what you need to
-
 import deploy
 import merge
 import refresh
@@ -17,12 +15,13 @@ repr(refresh)
 repr(sync)
 
 
-PROJECT_NAME = getattr(
-  settings, 'PROJECT_NAME', basename(abspath(join(dirname(__file__), "../"))))
-DJANGO_SETTINGS_MODULE = getattr(
-  settings, 'DJANGO_SETTINGS_MODULE', '%s.settings' % PROJECT_NAME)
-DJANGO_TEST_SETTINGS_MODULE = getattr(
-  settings, 'DJANGO_SETTINGS_MODULE', '%s.settings.test' % PROJECT_NAME)
+env.project_name = basename(abspath(join(dirname(__file__), "../")))
+env.django_settings_module = '%s.settings' % env.project_name
+env.django_test_settings_module = '%s.settings.test' % env.project_name
+
+django.settings_module(env.django_settings_module)
+from django.conf import settings
+
 STAGING_SERVER_USER = getattr(settings, 'STAGING_SERVER_USER', 'web')
 STAGING_SERVER_HOST = getattr(settings, 'STAGING_SERVER_HOST', 'staging')
 PRODUCTION_SERVER_USER = getattr(settings, 'PRODUCTION_SERVER_USER', None)
@@ -38,8 +37,3 @@ if PRODUCTION_SERVER_HOST:
     PRODUCTION_SERVER_USER + '@' if PRODUCTION_SERVER_USER else '',
     PRODUCTION_SERVER_HOST)
   env.roledefs['production'] = [production_access]
-
-env.project_name = PROJECT_NAME
-env.django_settings_module = DJANGO_SETTINGS_MODULE
-env.django_test_settings_module = DJANGO_TEST_SETTINGS_MODULE
-django.settings_module(DJANGO_SETTINGS_MODULE)
