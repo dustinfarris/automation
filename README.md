@@ -1,7 +1,7 @@
 Fabfile
 =======
 
-[![Build Status](https://travis-ci.org/dustinfarris/fabfile.png?branch=master)]
+[![Build Status](https://travis-ci.org/dustinfarris/fabfile.png?branch=master)](TravisCI)
 
 This module implements Fabric to perform the following tasks:
 
