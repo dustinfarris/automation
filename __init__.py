@@ -21,6 +21,8 @@ PROJECT_NAME = getattr(
   settings, 'PROJECT_NAME', basename(abspath(join(dirname(__file__), "../"))))
 DJANGO_SETTINGS_MODULE = getattr(
   settings, 'DJANGO_SETTINGS_MODULE', '%s.settings' % PROJECT_NAME)
+DJANGO_TEST_SETTINGS_MODULE = getattr(
+  settings, 'DJANGO_SETTINGS_MODULE', '%s.settings.test' % PROJECT_NAME)
 STAGING_SERVER_USER = getattr(settings, 'STAGING_SERVER_USER', 'web')
 STAGING_SERVER_HOST = getattr(settings, 'STAGING_SERVER_HOST', 'staging')
 PRODUCTION_SERVER_USER = getattr(settings, 'PRODUCTION_SERVER_USER', None)
