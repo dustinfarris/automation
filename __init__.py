@@ -5,14 +5,17 @@ from fabric.contrib import django
 
 import deploy
 import merge
+import pull_request
 import refresh
 import sync
-
+import topic
 
 repr(deploy)
 repr(merge)
+repr(pull_request)
 repr(refresh)
 repr(sync)
+repr(topic)
 
 
 env.project_name = basename(abspath(join(dirname(__file__), "../")))
