@@ -1,6 +1,8 @@
 Fabfile
 =======
 
+[![Build Status](https://travis-ci.org/dustinfarris/fabfile.png?branch=master)]
+
 This module implements Fabric to perform the following tasks:
 
   * ``fab refresh`` to sync your database with the servers and rsync
