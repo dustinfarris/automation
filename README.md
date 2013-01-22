@@ -32,14 +32,14 @@ about your project, then import automation:
 ```python
 from fabric.api import env
 
+
+env.project_name = 'myproject'
 env.django_settings_module = 'myproject.settings'
 env.django_test_settings_module = 'myproject.test_settings'
-env.staging_server = {
-  'host': '123.123.123.11',
-  'user': 'web'}
-env.production_server = {
-  'host': '123.123.123.22',
-  'user': 'web'}
+env.roledefs = {
+  'staging': 'web@12.12.12.12',
+  'production': 'web@45.45.45.45'}
+
 
 from automation import *
 ```
