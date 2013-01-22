@@ -37,8 +37,8 @@ env.project_name = 'myproject'
 env.django_settings_module = 'myproject.settings'
 env.django_test_settings_module = 'myproject.test_settings'
 env.roledefs = {
-  'staging': 'web@12.12.12.12',
-  'production': 'web@45.45.45.45'}
+  'staging': ['web@12.12.12.12'],
+  'production': ['web@45.45.45.45']}
 
 
 from automation import *
