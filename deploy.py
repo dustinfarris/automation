@@ -1,8 +1,6 @@
 from fabric.api import *
 from fabric.contrib import django
 
-from . import DJANGO_SETTINGS_MODULE, DJANGO_TEST_SETTINGS_MODULE
-
 
 def deploy(branch, plan):
   with prefix('source /var/www/%s/env/bin/activate' % env.project_name):
@@ -32,10 +30,10 @@ def test_branch(branch):
   local("git checkout %s" % branch)
   local("git pull origin %s" % branch)
   local("make develop")
-  django.settings_module(DJANGO_TEST_SETTINGS_MODULE)
+  django.settings_module(env.django_test_settings_module)
   if not local("make test").succeeded:
     abort("Testing failed for the %s branch." % branch)
-  django.settings_module(DJANGO_SETTINGS_MODULE)
+  django.settings_module(env.django_settings_module)
 
 
 def get_deploy_role():

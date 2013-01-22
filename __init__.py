@@ -40,4 +40,6 @@ if PRODUCTION_SERVER_HOST:
   env.roledefs['production'] = [production_access]
 
 env.project_name = PROJECT_NAME
+env.django_settings_module = DJANGO_SETTINGS_MODULE
+env.django_test_settings_module = DJANGO_TEST_SETTINGS_MODULE
 django.settings_module(DJANGO_SETTINGS_MODULE)
