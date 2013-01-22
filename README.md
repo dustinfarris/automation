@@ -27,4 +27,5 @@ A simple settings.py file will probably just have these four lines:
     PRODUCTION_SERVER_USER = 'web'
 
 Email any questions to
-[dustin@dustinfarris.com](mailto:dustin@dustinfarris.com)
+[dustin@dustinfarris.com](mailto:dustin@dustinfarris.com) or report
+[issues on GitHub](https://github.com/dustinfarris/fabfile/issues)
