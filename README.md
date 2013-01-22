@@ -14,14 +14,11 @@ This module implements Fabric to perform the following tasks:
   * ``fab deploy`` to run a "fast" or "full" deploy to either the
     staging or production servers.
 
-To use this fabfile, git-clone it in your projects root directory, then
-create fabfile/settings.py.  This file could be left empty, but you will
-likely want to add your server settings.
-
 Fabfile will automatically infer the project's name based on the root
 project directory, and the Django settings module in the same way.
 
-A simple settings.py file will probably just have these four lines:
+To use this fabfile, git-clone it in your projects root directory, then
+add some or all of the following to your settings.py:
 
     STAGING_SERVER_HOST = '123.123.123.11'
     STAGING_SERVER_USER = 'web'
