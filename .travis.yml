@@ -1,10 +1,8 @@
-language: 
+language:
   - python
 python:
   - "2.7"
 install:
   - make develop
-before_script:
-  - touch settings.py
 script:
   - make test

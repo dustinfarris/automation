@@ -18,9 +18,11 @@ repr(sync)
 repr(topic)
 
 
-env.project_name = basename(abspath(join(dirname(__file__), "../")))
-env.django_settings_module = '%s.settings' % env.project_name
-env.django_test_settings_module = '%s.settings.test' % env.project_name
+required_settings = [
+  'project_name', 'django_settings_module', 'django_test_settings_module']
+for required_setting in required_settings:
+  if not hasattr(env, required_setting):
+    raise RuntimeError('You must set %s in fabfile.py' % required_setting)
 
 django.settings_module(env.django_settings_module)
 from django.conf import settings
