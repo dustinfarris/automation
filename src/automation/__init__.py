@@ -17,6 +17,7 @@ repr(topic)
 
 
 required_settings = [
+  'repo_source',
   'project_name',
   'django_settings_module',
   'django_test_settings_module']
