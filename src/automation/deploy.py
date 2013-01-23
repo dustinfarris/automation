@@ -3,6 +3,9 @@ from fabric.contrib import django
 
 
 def deploy(branch, plan):
+  django.settings_module(env.django_settings_module)
+  from django.conf import settings
+
   with prefix('source /var/www/%s/env/bin/activate' % env.project_name):
     with cd('/var/www/%s' % env.project_name):
       server_branch = run("git branch")
@@ -17,7 +20,8 @@ def deploy(branch, plan):
       if plan == 'full':
         run("pip install --upgrade -r requirements.txt --use-mirrors")
       run("python manage.py migrate")
-      run("python manage.py rebuild_index --noinput")
+      if 'haystack' in settings.INSTALLED_APPS:
+        run("python manage.py rebuild_index --noinput")
       run("python manage.py collectstatic --noinput")
   sudo("service apache2 restart", shell=False)
   sudo("service memcached restart", shell=False)
