@@ -1,7 +1,15 @@
+Version 0.2.1
+-------------
+
+* Added check for haystack before running rebuild_index on the server
+
+
 Version 0.2.0
 -------------
 
+* Implemented GitHub pull requests.
 * Made roledefs configuration more concise.
+* Various bug fixes and documentation updates.
 
 
 Version 0.1.0
