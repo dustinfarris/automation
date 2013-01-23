@@ -17,6 +17,12 @@ This module implements Fabric to perform the following tasks:
   * ``fab deploy`` to run a "fast" or "full" deploy to either staging or
     production servers
 
+Requirements
+------------
+
+Automation requires [hub](http://defunkt.io/hub/) to perform GitHub
+pull requests.
+
 Installation
 ------------
 
