@@ -2,16 +2,17 @@ from fabric.api import env
 from fabric.contrib import django
 
 import deploy
-import merge
 import pull_request
 import refresh
+import stage
 import sync
 import topic
 
+
 repr(deploy)
-repr(merge)
 repr(pull_request)
 repr(refresh)
+repr(stage)
 repr(sync)
 repr(topic)
 
