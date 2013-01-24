@@ -13,7 +13,7 @@ def new():
   local("git push origin %s" % current_branch)
   if confirm(
     "Is this merge associated with a GitHub issue?",
-    default=False):
+    default=True):
     issue = prompt(
       "What is the issue number?",
       validate=int)
