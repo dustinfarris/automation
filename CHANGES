@@ -1,3 +1,12 @@
+Version 0.3.1
+-------------
+
+* Made GitHub issue association question for pull requests default
+  to True.
+* After a successful merge, re-checkout the branch the user was
+  originally working on.
+
+
 Version 0.3.0
 -------------
 
