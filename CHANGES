@@ -1,3 +1,11 @@
+Version 0.3.3
+-------------
+
+* Added option to provide a new topic name as a Fabric argument.
+* Rename 'merge' to 'stage'.
+* Added 'staging_branch' and 'production_branch' env options.
+
+
 Version 0.3.2
 -------------
 
