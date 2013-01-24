@@ -19,6 +19,7 @@ def merge_current_branch_into_master():
   local("git pull")
   local("git merge --no-ff --no-edit --commit -m \"%s\" %s" % (msg, branch))
   local("git push origin master")
+  local("git checkout %s" % branch)
 
 
 @task(default=True)
