@@ -1,3 +1,9 @@
+Version 0.3.2
+-------------
+
+* Added option to delete a topic branch after submitting a pull request.
+
+
 Version 0.3.1
 -------------
 
