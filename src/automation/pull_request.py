@@ -21,3 +21,9 @@ def new():
   else:
     title = prompt("Title:")
     local("hub pull-request \"%s\" -b production" % title)
+
+  if confirm(
+    "Pull-request complete.  Delete your branch '%s'?" % current_branch,
+    default=False):
+    local("git checkout master")
+    local("git branch -d %s" % current_branch)
