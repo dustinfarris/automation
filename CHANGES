@@ -1,3 +1,12 @@
+Version 0.3.0
+-------------
+
+* Changed the way we do full deploys.  Instead of running pip install
+  and hoping that takes care of everything, we create a brand new
+  timestamped directory, build the whole project over, then swap a
+  symlink right before restarting Apache.
+
+
 Version 0.2.1
 -------------
 
