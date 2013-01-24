@@ -25,4 +25,7 @@ for required_setting in required_settings:
   if not hasattr(env, required_setting):
     raise RuntimeError('You must set %s in fabfile.py' % required_setting)
 
+env.production_branch = getattr(env, 'production_branch', 'master')
+env.staging_branch = getattr(env, 'staging_branch', 'staging')
+
 django.settings_module(env.django_settings_module)

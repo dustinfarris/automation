@@ -108,13 +108,13 @@ def get_deploy_role():
 
 def run_deploy(plan):
   if env.deploy_role == 'staging':
-    execute(deploy, 'master', plan, role='staging')
+    execute(deploy, env.staging_branch, plan, role='staging')
   elif env.deploy_role == 'production':
     if plan == 'fast':
       if not confirm(
         "Fast deploys to production are discouraged.  Continue anyway?"):
         abort("Production fast deploy cancelled.")
-    execute(deploy, 'production', plan, role='production')
+    execute(deploy, env.production_branch, plan, role='production')
 
 
 @task(default=True)
