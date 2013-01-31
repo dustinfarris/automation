@@ -77,9 +77,9 @@ def deploy(branch, plan):
     elif plan == 'full':
         full_deploy(branch)
 
-    sudo("service apache2 restart", shell=False)
-    sudo("service memcached restart", shell=False)
-    sudo("service nginx restart", shell=False)
+    sudo("service apache2 restart", shell=False, pty=False)
+    sudo("service memcached restart", shell=False, pty=False)
+    sudo("service nginx restart", shell=False, pty=False)
 
 
 def test_branch(branch):
