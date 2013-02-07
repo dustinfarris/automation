@@ -1,3 +1,10 @@
+Version 0.3.3.3
+---------------
+
+* Fetch origin before syncing
+* Compress files offline before running collectstatic
+
+
 Version 0.3.3.2
 ---------------
 
