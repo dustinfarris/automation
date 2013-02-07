@@ -36,6 +36,7 @@ def full_deploy(branch):
             run("ln -s /usr/lib/python2.7/dist-packages/xapian/ "
                 "env/lib/python2.7/site-packages/.")
             run("python manage.py migrate")
+            run("python manage.py compress")
             run("python manage.py collectstatic --noinput")
             if 'haystack' in settings.INSTALLED_APPS:
                 run("python manage.py rebuild_index --noinput")
@@ -64,11 +65,11 @@ def fast_deploy(branch):
             run("git pull")
             run("git submodule init")
             run("git submodule update")
-
             run("python manage.py migrate")
+            run("python manage.py compress")
+            run("python manage.py collectstatic --noinput")
             if 'haystack' in settings.INSTALLED_APPS:
                 run("python manage.py rebuild_index --noinput")
-            run("python manage.py collectstatic --noinput")
 
 
 def deploy(branch, plan):
