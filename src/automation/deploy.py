@@ -2,6 +2,8 @@ from fabric.api import *
 from fabric.contrib import django
 from fabric.contrib.console import confirm
 
+from helpers import choose
+
 
 def full_deploy(branch):
     django.settings_module(env.django_settings_module)
@@ -103,14 +105,6 @@ def test_branch(branch):
     django.settings_module(env.django_settings_module)
 
 
-def get_deploy_role():
-    prompt(
-        "Where would you like to deploy (staging or production)?",
-        'deploy_role',
-        default='staging',
-        validate=r'(staging|production)')
-
-
 def run_deploy(plan):
     if env.deploy_role == 'staging':
         execute(deploy, env.staging_branch, plan, role='staging')
@@ -124,9 +118,11 @@ def run_deploy(plan):
 
 @task(default=True)
 def interactive():
-    get_deploy_role()
-    plan = prompt(
-        "What kind of deploy would you like to do (fast or full)?",
-        default='full' if env.deploy_role == 'production' else 'fast',
-        validate=r'(fast|full)')
+    server_options = ['staging', 'production']
+    plan_options = ['fast', 'full']
+
+    env.deploy_role = choose(
+        "Where would you like to deploy?", server_options)
+    plan = choose("What kind of deploy would you like to do?", plan_options)
+
     run_deploy(plan)
