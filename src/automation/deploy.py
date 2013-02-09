@@ -31,6 +31,7 @@ def full_deploy(branch):
         run(
             "ln -sf %s %s/%s/settings/__init__.py" % (
                 project_settings_path, new_instance_path, project_name))
+        run("ln -sf %s %s/media" % (media_path, new_instance_path))
         with prefix('source %s/env/bin/activate' % new_instance_path):
             run("pip install --upgrade -r requirements.txt --use-mirrors")
             run("ln -s /usr/lib/python2.7/dist-packages/xapian/ "
@@ -38,10 +39,11 @@ def full_deploy(branch):
             run("python manage.py migrate")
             run("python manage.py compress")
             run("python manage.py collectstatic --noinput")
+            if env.deploy_role == 'production':
+                run("python manage.py raxsync --all")
             if 'haystack' in settings.INSTALLED_APPS:
                 run("python manage.py rebuild_index --noinput")
 
-    run("ln -sf %s %s/media" % (media_path, new_instance_path))
     run("ln -sfn %s %s" % (new_instance_path, project_path))
 
     run("source %s" % script_path)
@@ -68,6 +70,8 @@ def fast_deploy(branch):
             run("python manage.py migrate")
             run("python manage.py compress")
             run("python manage.py collectstatic --noinput")
+            if env.deploy_role == 'production':
+                run("python manage.py raxsync --all")
             if 'haystack' in settings.INSTALLED_APPS:
                 run("python manage.py rebuild_index --noinput")
 
