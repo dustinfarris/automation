@@ -1,3 +1,9 @@
+Version 0.3.3.6
+---------------
+
+* Collectstatic now gets run before Compress
+
+
 Version 0.3.3.5
 ---------------
 
