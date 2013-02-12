@@ -39,8 +39,8 @@ def full_deploy(branch):
             run("ln -s /usr/lib/python2.7/dist-packages/xapian/ "
                 "env/lib/python2.7/site-packages/.")
             run("python manage.py migrate")
+            run("python manage.py collectstatic --noinput")            
             run("python manage.py compress")
-            run("python manage.py collectstatic --noinput")
             if env.deploy_role == 'production':
                 run("python manage.py raxsync --all")
             if 'haystack' in settings.INSTALLED_APPS:
@@ -70,8 +70,8 @@ def fast_deploy(branch):
             run("git submodule init")
             run("git submodule update")
             run("python manage.py migrate")
-            run("python manage.py compress")
             run("python manage.py collectstatic --noinput")
+            run("python manage.py compress")
             if env.deploy_role == 'production':
                 run("python manage.py raxsync --all")
             if 'haystack' in settings.INSTALLED_APPS:
