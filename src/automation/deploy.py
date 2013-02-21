@@ -39,7 +39,7 @@ def full_deploy(branch):
             run("ln -s /usr/lib/python2.7/dist-packages/xapian/ "
                 "env/lib/python2.7/site-packages/.")
             run("python manage.py migrate")
-            run("python manage.py collectstatic --noinput")            
+            run("python manage.py collectstatic --noinput")
             run("python manage.py compress")
             if env.deploy_role == 'production':
                 run("python manage.py raxsync --all")
