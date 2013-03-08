@@ -22,7 +22,7 @@ install_requires = [
 
 setup(
     name='automation',
-    version='0.3.4',
+    version='0.3.5',
     author='Dustin Farris',
     author_email='dustin@dustinfarris.com',
     url='https://github.com/dustinfarris/automation',

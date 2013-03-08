@@ -1,3 +1,10 @@
+Version 0.3.5
+-------------
+
+- Moving Python modules into a 'src' directory, so need to use this
+  when symlinking the settings __init__ file.
+
+
 Version 0.3.4
 -------------
 
