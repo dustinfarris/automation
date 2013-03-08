@@ -31,7 +31,7 @@ def full_deploy(branch):
         run("git submodule update")
         run("virtualenv env")
         run(
-            "ln -sf %s %s/%s/settings/__init__.py" % (
+            "ln -sf %s %s/src/%s/settings/__init__.py" % (
                 project_settings_path, new_instance_path, project_name))
         run("ln -sf %s %s/media" % (media_path, new_instance_path))
         with prefix('source %s/env/bin/activate' % new_instance_path):
