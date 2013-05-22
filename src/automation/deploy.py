@@ -42,7 +42,8 @@ def full_deploy(branch):
             run("python manage.py collectstatic --noinput")
             run("python manage.py compress")
             if env.deploy_role == 'production':
-                run("python manage.py raxsync --all")
+                if 'rax' in settings.INSTALLED_APPS:
+                    run("python manage.py raxsync --all")
             if 'haystack' in settings.INSTALLED_APPS:
                 run("python manage.py rebuild_index --noinput")
 
