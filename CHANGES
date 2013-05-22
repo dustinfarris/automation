@@ -1,3 +1,9 @@
+Version 0.5.1
+-------------
+
+- Check for presence of 'rax' application before running raxsync
+
+
 Version 0.5.0
 -------------
 
