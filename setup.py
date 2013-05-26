@@ -18,7 +18,7 @@ tests_require = []
 
 install_requires = [
     'Django>=1.4',
-    'Fabric==1.5.2']
+    'Fabric==1.6.1']
 
 setup(
     name='automation',
