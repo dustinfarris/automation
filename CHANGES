@@ -1,3 +1,10 @@
+Version 0.5.4
+-------------
+
+- Fixed bug where automation tried to sync with rackspace on fast deploys
+  even when django-rax is not installed.
+
+
 Version 0.5.3
 -------------
 
