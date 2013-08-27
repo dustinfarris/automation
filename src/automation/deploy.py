@@ -38,7 +38,7 @@ def full_deploy(branch):
                 project_settings_path, new_instance_path, project_name))
         run("ln -sf %s %s/media" % (media_path, new_instance_path))
         with prefix('source %s/env/bin/activate' % new_instance_path):
-            run("pip install --upgrade -r requirements/core.txt --use-mirrors")
+            run("pip install -v --upgrade -r requirements/core.txt --use-mirrors")
             run("ln -s /usr/lib/python2.7/dist-packages/xapian/ "
                 "env/lib/python2.7/site-packages/.")
             run("python manage.py migrate")
