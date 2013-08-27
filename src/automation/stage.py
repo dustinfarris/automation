@@ -25,4 +25,4 @@ def merge_current_branch_into_staging_branch():
 @task(default=True)
 def interactive():
     merge_current_branch_into_staging_branch()
-    print "\nMerge complete.  You may now run `fab deploy`."
+    print("\nMerge complete.  You may now run `fab deploy`.")

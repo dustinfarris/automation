@@ -28,5 +28,5 @@ for required_setting in required_settings:
 
 env.production_branch = getattr(env, 'production_branch', 'master')
 env.staging_branch = getattr(env, 'staging_branch', 'staging')
-env.python_major_version = getattr(env, 'python_major_version', None)
+env.python_interpreter = getattr(env, 'python_interpreter', None)
 django.settings_module(env.django_settings_module)

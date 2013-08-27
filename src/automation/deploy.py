@@ -29,8 +29,8 @@ def full_deploy(branch):
         run("git pull")
         run("git submodule init")
         run("git submodule update")
-        if env.python_major_version:
-            run("virtualenv env --python=%s" % env.python_major_version)
+        if env.python_interpreter:
+            run("virtualenv env --python=%s" % env.python_interpreter)
         else:
             run("virtualenv env")
         run(
