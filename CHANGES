@@ -1,3 +1,10 @@
+Version 0.5.6
+-------------
+
+- Rename Python interpreter configuration to `python_interpreter`
+- Add verbosity to pip installs
+
+
 Version 0.5.5
 -------------
 
