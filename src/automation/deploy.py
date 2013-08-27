@@ -27,8 +27,6 @@ def full_deploy(branch):
         run("git fetch origin")
         run("git checkout %s" % branch)
         run("git pull")
-        run("git submodule init")
-        run("git submodule update")
         if env.python_interpreter:
             run("virtualenv env --python=%s" % env.python_interpreter)
         else:
@@ -38,17 +36,7 @@ def full_deploy(branch):
                 project_settings_path, new_instance_path, project_name))
         run("ln -sf %s %s/media" % (media_path, new_instance_path))
         with prefix('source %s/env/bin/activate' % new_instance_path):
-            run("pip install -v --upgrade -r requirements/core.txt --use-mirrors")
-            run("ln -s /usr/lib/python2.7/dist-packages/xapian/ "
-                "env/lib/python2.7/site-packages/.")
-            run("python manage.py migrate")
-            run("python manage.py collectstatic --noinput")
-            run("python manage.py compress")
-            if env.deploy_role == 'production':
-                if 'rax' in settings.INSTALLED_APPS:
-                    run("python manage.py raxsync --all")
-            if 'haystack' in settings.INSTALLED_APPS:
-                run("python manage.py rebuild_index --noinput")
+            run("make deploy")
 
     run("ln -sfn %s %s" % (new_instance_path, project_path))
 
