@@ -59,16 +59,7 @@ def fast_deploy(branch):
             if "Changes to be comitted" in server_status:
                 abort("There are uncomitted changes on the server.")
             run("git pull")
-            run("git submodule init")
-            run("git submodule update")
-            run("python manage.py migrate")
-            run("python manage.py collectstatic --noinput")
-            run("python manage.py compress")
-            if env.deploy_role == 'production':
-                if 'rax' in settings.INSTALLED_APPS:
-                    run("python manage.py raxsync --all")
-            if 'haystack' in settings.INSTALLED_APPS:
-                run("python manage.py rebuild_index --noinput")
+            run("make update")
 
 
 def deploy(branch, plan):
